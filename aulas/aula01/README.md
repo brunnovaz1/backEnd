@@ -11,7 +11,8 @@ git config --local user.email "brunnovaz@gmail.com"
 git config --local user.name "brunnovaz1"
 ```
 
-3. Verificar status do git
+3. Verificar status do 
+
 ```shell
 git status
 ```
