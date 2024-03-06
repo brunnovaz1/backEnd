@@ -1,0 +1,42 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Testes da API REST",
+    "dateExported": "2024-03-06T01:06:09.491Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "664d1330-4b3b-4a8a-aa6a-8ba5f5a27720",
+            "colId": "54e2b123-7373-49b7-bf0d-131d443813ee",
+            "containerId": "",
+            "name": "https://dummyjson.com/products",
+            "url": "https://dummyjson.com/products/101",
+            "method": "DELETE",
+            "sortNum": 10000,
+            "created": "2024-03-06T01:04:15.716Z",
+            "modified": "2024-03-06T01:04:15.716Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c7dd1484-53ba-4bff-b474-7aef038ee172",
+            "colId": "54e2b123-7373-49b7-bf0d-131d443813ee",
+            "containerId": "",
+            "name": "http://localhost:3000/produtos",
+            "url": "http://localhost:3000/produtos/1",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-03-06T01:04:51.043Z",
+            "modified": "2024-03-06T01:04:51.043Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": \"1\",\n  \"nome\": \"banana\",\n  \"preco\": 5\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
