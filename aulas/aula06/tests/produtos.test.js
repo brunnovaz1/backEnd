@@ -1,4 +1,4 @@
-const supertest = require('supertest');
+const supertest = require('supertest')
 
 const app = require('../app');
 
