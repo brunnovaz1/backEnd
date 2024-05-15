@@ -3,14 +3,14 @@ npx express-generator --no-view aula10
 npm install swagger-ui-express yaml dotenv mongoose
 npm install --save-dev nodemon jest supertest
 
-Alterar packade.json:
+Alterar package.json:
 "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon./bin/www",
     "test": "jest --watchAll"
 }
 
-exclui pasta public
-apaga conteudo pasta routres
+excluir pasta public
+apagar conteudo pasta routes
 criar  pasta controllers, models, tests
 app.js  apagar linhas: 2, 6, 7, 15, 17, 18
