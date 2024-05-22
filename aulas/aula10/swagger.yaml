@@ -1,3 +1,4 @@
+
 openapi: 3.0.0
 info:
   title: API Loja Virtual
@@ -6,59 +7,115 @@ tags:
   - produtos
 paths:
   /produtos:
-   post:
-    tags:
-     - produtos
-    requestBody:
-     content:
-      application/json:
-       schema:
-        $ref: '#/components/schemas/Produto'
-    responses:
-     201:
-      content:
-       application/json:
-        schema:
-         $ref: '#/components/schemas/Produto'
-     422:
-      content:
-       application/json:
-        schema:
-         $ref: '#/components/schemas/Mensagem'
-   get:
-     tags:
-      - produtos
-     responses:
-      200:
+    post:
+      tags:
+        - produtos
+      requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ArrayOfProdutos'
+              $ref: '#/components/schemas/Produto'
+      responses:
+        201:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produto'
+        422:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
+    get:
+      tags:
+        - produtos
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfProdutos'
   /produtos/{id}:
     get:
       tags:
-       - produtos
+        - produtos
       parameters:
-       - in: path
-         type: string
-         name: id
+        - in: path
+          type: string
+          name: id
       responses:
-       200:
-         content:
-           application/json:
-             schema:
-               $ref: '#/components/schemas/Produto'
-       404:
-         content:
-           application/json:
-             schema:
-               $ref: '#/components/schemas/Mensagem'
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produto'
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
+    put:
+      tags:
+        - produtos
+      parameters:
+        - in: path
+          type: string
+          name: id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Produto'
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produto'
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
+        422:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
+    delete:
+      tags:
+        - produtos
+      parameters:
+        - in: path
+          type: string
+          name: id
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produto'
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
 components:
   schemas:
     ArrayOfProdutos:
       type: array
       items:
-       $ref: '#/components/schemas/Produto'
+        $ref: '#/components/schemas/Produto'
     Produto:
       type: object
       properties:
@@ -71,4 +128,3 @@ components:
       properties:
         msg:
           type: string
-      

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Produto = require('../models/model_produtos');
+const { removeListener } = require('../app');
 
-
- async function validarDados(req, res, next){
+async function validarDados(req, res, next){
     const produto = new Produto(req.body)
     try {
         await produto.validate();
@@ -18,29 +18,42 @@ async function criar(req, res) {
 }
 
 async function obterTodos(req, res) {
-    const produtos = await Produto.find({});
+    const produtos = await Produto.find({})
     res.json(produtos)
 }
 
-async function buscarPeloId(req, res, next) {
-    try {
-        const id = new mongoose.Types.ObjectId(req.params.id);
-        const produto = await Produto.findOne({_id:id});
-        if(produto) {
+async function buscarPeloId(req, res, next){
+    try{
+        const id = new mongoose.Types.ObjectId(req.params.id)
+        const produto = await Produto.findOne({_id:id})
+        if (produto){
             next()
-        } else {
-            res.status(404).json({msg:"Produto não encontrado!"})
+        }else{
+            res.status(404).json({msg:'ID não localizado'})
         }
-    } catch(err) {
-        res.status(404).json({msg:"Id inválido!"})
-    }    
+    }catch(err){
+        res.status(404).json({msg:'Produto não encontrado'})
+    }
+
 }
 
-async function obter(req, res) {
-    const id = new mongoose.Types.ObjectId(req.params.id);
-    const produto = await Produto.findOne({_id:id});
+async function obter(req,res) {
+    const id = new mongoose.Types.ObjectId(req.params.id)
+    const produto = await Produto.findOne({_id:id})
     res.json(produto)
 }
 
 
-module.exports = { validarDados, criar, obterTodos, obter, buscarPeloId}
+async function atualizar(req, res) {
+    const id = new mongoose.Types.ObjectId(req.params.id);
+    const produto = await Produto.findOneAndUpdate({ _id: id }, req.body);
+    res.json(produto);
+  }
+
+async function remover(req, res) {
+    const id = new mongoose.Types.ObjectId(req.params.id);
+    await Produto.findOneAndDelete({ _id: id }, req.body);
+    res.status (204).end()
+}
+  
+module.exports = { validarDados, criar, obterTodos, obter, buscarPeloId, atualizar, remover }

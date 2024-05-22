@@ -2,15 +2,24 @@ const express = require('express');
 
 const controllerProdutos = require('../controllers/controller_produtos');
 
+const validarToken = require("../middlewares/auth");
+
 const router = express.Router();
 
 router.post('/', controllerProdutos.validarDados, controllerProdutos.criar);
 
-router.get('/', controllerProdutos.obterTodos)
+router.get('/', validarToken, controllerProdutos.obterTodos);
 
-router.get("/:id",
+router.get('/:id', controllerProdutos.buscarPeloId, controllerProdutos.obter)
+
+router.put(
+    "/:id",
     controllerProdutos.buscarPeloId,
-    controllerProdutos.obter
-    )
+    controllerProdutos.validarDados, 
+    controllerProdutos.atualizar
+  );
+
+router.delete ('/:id', controllerProdutos.buscarPeloId, controllerProdutos.remover)
+  
 
 module.exports = router;
