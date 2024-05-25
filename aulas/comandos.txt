@@ -15,3 +15,5 @@ excluir pasta public
 apagar conteudo pasta routes
 criar  pasta controllers, models, tests
 app.js  apagar linhas: 2, 6, 7, 15, 17, 18
+
+criptografar token: npm install jsonwebtoken
